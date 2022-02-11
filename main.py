@@ -3,13 +3,16 @@ import re, requests, glob, json
 def reqtext(url):
 
 	req = requests.get(url)
-	return req.text
+	data = req.text
+	req.close()
+	return data
 
 def downloadmp3(url, name):
 
 	req = requests.get(url)
 	with open(name,'wb') as file:
 		file.write(req.content)
+	req.close()
 
 def config(file):
 
